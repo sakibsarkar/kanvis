@@ -12,10 +12,33 @@ const subscriptionSchema = new mongoose.Schema(
       ref: "Plan",
       required: true,
     },
+
     stripeSubscriptionId: {
       type: String,
       required: false,
       default: "",
+    },
+
+    stripeCustomerId: {
+      type: String,
+      required: true,
+    },
+
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+
+    status: {
+      type: String,
+      enum: ["active", "canceled", "incomplete", "past_due", "unpaid"],
+      required: true,
+    },
+
+    startDate: {
+      type: Date,
+      required: true,
     },
 
     currentCredit: {

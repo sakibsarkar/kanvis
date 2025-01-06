@@ -6,7 +6,7 @@ const planSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    stripePriceId: {
+    stripepProductId: {
       type: String,
       required: false, // This is the Stripe price ID
       default: "",
@@ -20,7 +20,7 @@ const planSchema = new mongoose.Schema(
       required: true,
     },
     credit: {
-      type: Number,
+      type: Number, // -1 for unlimited
       required: true,
     },
 

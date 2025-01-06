@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
+import AppError from "../errors/AppError";
 import Authentication from "../models/auth.model";
-import ErrorHandler from "../utils/errorhandler";
 
 export const isAuthenticatedUser = async (
   req: any,
@@ -47,9 +47,9 @@ export const authorizeRoles = (...roles: any) => {
   return (req: any, res: Response, next: NextFunction) => {
     if (!roles.includes(req.user?.role)) {
       return next(
-        new ErrorHandler(
-          `User type: ${req.user?.role} is not allowed to access this resouce `,
-          403
+        new AppError(
+          403,
+          `User type: ${req.user?.role} is not allowed to access this resouce `
         )
       );
     }

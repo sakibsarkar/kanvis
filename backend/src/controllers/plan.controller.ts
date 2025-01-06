@@ -3,12 +3,12 @@ import Plan from "../models/plan.model";
 import sendResponse from "../utils/sendResponse";
 
 export const createPlan = catchAsyncError(async (req, res) => {
-  const { name, stripePriceId, duration, description, price, credit } =
+  const { name, stripepProductId, duration, description, price, credit } =
     req.body;
 
   const newPlan = new Plan({
     name,
-    stripePriceId,
+    stripepProductId,
     duration,
     description,
     price,
